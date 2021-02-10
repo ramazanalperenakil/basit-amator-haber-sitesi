@@ -1,0 +1,270 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ana.master.cs" Inherits="ana" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title id="baslik" runat="server">Haber Sitesi</title>
+    <link href="stiller/ana.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.0.0.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link href="stiller/manset.css" rel="stylesheet" />
+    <script src="js/mansetlib.js"></script>
+    <script src="js/mansetjquery.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="background-color: #E8E8E8;">
+    <form id="form1" runat="server">
+        <div>
+            <section class="container ">
+                <div class="  row mt-0 pt-1 ">
+                    <div class="col-4  ">
+
+                        <asp:Repeater ID="RepeaterLogo" runat="server">
+                            <ItemTemplate>
+                                <img src="<%#Eval("LogoUrl")%>" class="img-fluid" />
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        
+
+                    </div>
+                    <div class="col-8 ">
+                        <asp:Repeater ID="RepeaterUstReklam" runat="server">
+                            <ItemTemplate>
+                                <img src="<%#Eval("Reklam_Resim_Url")%>" class="img-fluid" />
+
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        
+
+
+                    </div>
+                    <div class="col-12 pt-1 ">
+                        <nav class=" navbar navbar-dark bg-dark  navbar-expand-lg navbar-light bg-light  ">
+
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Default.aspx">Anasayfa</a>
+
+                                    </li>
+                                    <asp:Repeater ID="RepeaterKategori" runat="server">
+                                        <ItemTemplate>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="Kategori.aspx?tur=<%#Eval("MenuUrl")%>"><%#Eval("MenuAdi")%></a>
+                                            </li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                    <asp:Repeater ID="RepeaterMenu" runat="server">
+                                        <ItemTemplate>
+                                               <li class="nav-item">
+                                        <a class="nav-link" href="Sayfa.aspx?=<%#Eval("SayfaUrl")%>"><%#Eval("SayfaAdi")%></a>
+
+                                    </li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                    
+
+
+                                      
+                                     
+                                   
+
+
+                                </ul>
+
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+
+            </section>
+        
+            <section class="container">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
+                            <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-danger py-2 text-white px-1 news"><span class="d-flex align-items-center"  style="font-size:12px;">Son Dakika</span></div>
+                            <marquee class="news-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();"> 
+                                <asp:Repeater ID="RepeaterSonDakika" runat="server">
+                                    <ItemTemplate>
+                                        <a href="Haber.aspx?=<%#Eval("url")%>" style="font-size:18px;"><%#Eval("HaberBaslik")%></a> <span class="dot"></span>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                                    
+
+                                   </marquee>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </section>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+
+            <!-- Footer -->
+            <footer class="page-footer font-small mdb-color pt-4">
+
+                <!-- Footer Links -->
+                <div class="container text-center text-md-left">
+
+                    <!-- Footer links -->
+                    <div class="row text-center text-md-left mt-3 pb-3">
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                            <h6 class="text-uppercase mb-4 font-weight-bold" id="SiteAdi" runat="server">Company name</h6>
+                            <p id="SiteKisaBilgi" runat="server">
+                             
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <hr class="w-100 clearfix d-md-none">
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">Misyon</h6>
+                             <p id="p2" runat="server">
+                             
+                            </p>
+
+
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <hr class="w-100 clearfix d-md-none">
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">Vizyon</h6>
+
+                            <p id="p3" runat="server">
+                             
+                            </p>
+
+                        </div>
+
+                        <!-- Grid column -->
+                        <hr class="w-100 clearfix d-md-none">
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">İletişim</h6>
+                            <p>
+                                <i class="fas fa-home mr-3 " id="adres" runat="server"></i>
+                            </p>
+                            <p>
+                                <i class="fas fa-envelope mr-3" id="mail" runat="server"></i>
+                            </p>
+                            <p>
+                                <i class="fas fa-phone mr-3" id="tel" runat="server"></i>
+                            </p>
+                            <p>
+                                <i class="fas fa-print mr-3" id="fax" runat="server"></i>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+                    <!-- Footer links -->
+
+                    <hr>
+                    <script runat="server">
+                        protected string GetTime()
+                        {
+                            return DateTime.Now.Year.ToString();
+
+                        }
+                    </script>
+                    <!-- Grid row -->
+                    <div class="row d-flex align-items-center">
+
+                        <!-- Grid column -->
+                        <div class="col-md-7 col-lg-8 row">
+
+                            <!--Copyright-->
+                            <p class="text-center text-md-left pb-4">
+                                <div runat="server">
+                                    <div>
+                                        &copy  <%= GetTime() %>
+                                    </div>
+                                </div>
+                                <asp:Repeater ID="RepeaterFooterAlt" runat="server">
+                                    <ItemTemplate>
+                                        <a href="http://<%#Eval("SiteUrl")%>">
+                                            <strong class="m-2"><%#Eval("SiteAdi")%></strong>
+                                        </a>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+
+                            </p>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-5 col-lg-4 ml-lg-0">
+
+                            <!-- Social buttons -->
+                            <%--     <div class="text-center text-md-right">
+                                <ul class="list-unstyled list-inline">
+                                    <li class="list-inline-item">
+                                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                            <i class="fab fa-google-plus-g"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>--%>
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row -->
+
+                </div>
+                <!-- Footer Links -->
+
+            </footer>
+            <!-- Footer -->
+
+        </div>
+    </form>
+</body>
+</html>
