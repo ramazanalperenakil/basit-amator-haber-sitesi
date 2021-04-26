@@ -2,6 +2,6 @@
 
 ASP NET WEB FORM BASİT GELİŞMEYE AÇIK HABER SİTESİ
 
-DEMO : http://ramazan.somee.com
+DEMO : http://www.haber.somee.com
 
 GELİŞMİŞ HABER SİTESİ : http://haberci.somee.com
